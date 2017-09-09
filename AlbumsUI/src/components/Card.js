@@ -1,24 +1,33 @@
-/* @flow */
+// make it reusable and make it look nice
+// card is the overall rectangle for the albums
 
-import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 
-export default class MyComponent extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>I'm the MyComponent component</Text>
-      </View>
-    );
+const Card = (props) => {
+  return (
+    <View style={styles.containerStyle}>
+      {props.children}
+    </View>
+  );
+};
+
+const styles = {
+  containerStyle: {
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: '#DDD',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 1,
+    marginLeft: 5,
+    marginRight: 5,
+    // adds spacing between cards
+    marginTop: 10,
   }
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+export default Card;

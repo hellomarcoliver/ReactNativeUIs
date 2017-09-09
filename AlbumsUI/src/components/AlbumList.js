@@ -1,8 +1,7 @@
-/* @flow */
-
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import axios from 'axios';
+import AlbumDetail from './AlbumDetail';
 
 // class based components needs render method
 // whenever you use state, you go with a class besed function
@@ -15,24 +14,21 @@ class AlbumList extends Component {
     axios.get('https://rallycoding.herokuapp.com/api/music_albums').then(response => this.setState({ AlbumsUI: response.data }));
   }
 
+// produce the array and also prop down data to AlbumDetail
+  renderAlbums() {
+    return this.state.AlbumsUI.map(album =>
+      <AlbumDetail key={album.title} album={album} />
+    );
+  }
+
+// render it to the screen
   render() {
-    console.log(this.state);
     return (
       <View>
-        <Text>Album List</Text>
+        {this.renderAlbums()}
       </View>
     );
   }
 }
-
-/* this is a functional component which returns jsx
-const AlbumList = () => {
-  return (
-    <View>
-      <Text>Album List</Text>
-    </View>
-  );
-};
-*/
 
 export default AlbumList;

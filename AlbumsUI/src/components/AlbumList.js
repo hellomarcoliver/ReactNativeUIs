@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import axios from 'axios';
+import { ScrollView } from 'react-native';
 import AlbumDetail from './AlbumDetail';
 
 // class based components needs render method
@@ -8,13 +7,18 @@ import AlbumDetail from './AlbumDetail';
 class AlbumList extends Component {
   // set up initial state for our component AlbumList
   state = { AlbumsUI: [] };
-
   // update the AlbumList component with data from the link below
-  componentWillMount() {
-    axios.get('https://rallycoding.herokuapp.com/api/music_albums').then(response => this.setState({ AlbumsUI: response.data }));
-  }
+  // this is also called a lifecycle method
+    componentWillMount() {
+      // ASYNC HTTP Request to get albums from the API.
+      // eslint-disable-next-line
+      fetch('https://api.myjson.com/bins/toutt')
+      .then((response) => { return response.json() } )
+      .catch((error) => console.warn("fetch error:", error))
+      .then((responseData) => this.setState({ AlbumsUI: responseData }));
+    }
 
-// produce the array and also prop down data to AlbumDetail
+// produce the array and also provide data to AlbumDetail
   renderAlbums() {
     return this.state.AlbumsUI.map(album =>
       <AlbumDetail key={album.title} album={album} />
@@ -22,11 +26,13 @@ class AlbumList extends Component {
   }
 
 // render it to the screen
+// we replaced View tag with the ScrollView to make it scrollable
   render() {
+    console.log(this.state);
     return (
-      <View>
+      <ScrollView>
         {this.renderAlbums()}
-      </View>
+      </ScrollView>
     );
   }
 }

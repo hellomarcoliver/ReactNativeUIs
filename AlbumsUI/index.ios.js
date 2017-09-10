@@ -6,11 +6,12 @@ import { AppRegistry, View } from 'react-native';
 import Header from './src/components/Header';
 import AlbumList from './src/components/AlbumList';
 
-// this is the root component
+// this is the root component or roo view
 // create a react native component
 // actually -do component nesting
 const App = () => (
-  <View>
+  // flex says: please expand this component to the entire screen
+  <View style={{ flex: 1 }}>
     <Header headerText={'AlbumsUI'} />
     <AlbumList />
   </View>

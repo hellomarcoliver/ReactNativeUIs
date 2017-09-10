@@ -1,11 +1,12 @@
-// make it reusable and make it look nice
-// card is the overall rectangle for the albums
+// purpose of this component:
+// add some resuable styling to AlbumsDetail
 
 import React from 'react';
 import { View } from 'react-native';
 
 const Card = (props) => {
   return (
+    //making it possible to add children components
     <View style={styles.containerStyle}>
       {props.children}
     </View>

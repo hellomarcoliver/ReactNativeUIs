@@ -1,6 +1,7 @@
-/* @flow */
+// purpose of this component:
+// add some reusable styling to Card
 
-import React, { Component } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
 const CardSection = (props) => {
@@ -18,6 +19,7 @@ const styles = {
     padding: 5,
     backgroundColor: '#FFF',
     justifyContent: 'flex-start',
+    //this makes the avatar and name align in a row (see AlbumDetail)
     flexDirection: 'row',
     borderColor: '#DDD',
     position: 'relative'

@@ -1,14 +1,11 @@
-// import libraries
+// Import libraries for making a component
 import React from 'react';
 import { Text, View } from 'react-native';
 
-// first child component (App is root component)
-// make component –always need a function for that
-// the props property is used to make the copy more generic
+// Make a component
 const Header = (props) => {
-  //this below shortens styles.viewStyle further down after return statement
   const { textStyle, viewStyle } = styles;
-  //add the prop for style
+
   return (
     <View style={viewStyle}>
       <Text style={textStyle}>{props.headerText}</Text>
@@ -16,7 +13,6 @@ const Header = (props) => {
   );
 };
 
-// add style to Header component
 const styles = {
   viewStyle: {
     backgroundColor: '#F8F8F8',
@@ -26,12 +22,14 @@ const styles = {
     paddingTop: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.4
+    shadowOpacity: 0.2,
+    elevation: 2,
+    position: 'relative'
   },
   textStyle: {
     fontSize: 20
   }
 };
 
-// make component available
+// Make the component available to other parts of the app
 export { Header };

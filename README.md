@@ -5,7 +5,7 @@ Adding basic UIs for general use within the next three months.
 
 Example Screens and Screenshots:
 -------------
-----------
+See a few example screenshots from components that are in this repository.
 
 AlbumsUI:
 -------------

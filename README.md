@@ -10,3 +10,8 @@ See a few example screenshots from components that are in this repository.
 AlbumsUI:
 -------------
 ![Albums UI Image](https://i.imgur.com/enby829.png)
+
+
+SignUI:
+-------------
+![Authentication UI Image](https://i.imgur.com/enby829.png)

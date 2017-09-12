@@ -1,5 +1,7 @@
+//this Component handles all the interaction with the form and renders elements
+
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 
@@ -40,11 +42,12 @@ class LoginForm extends Component {
 
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
-        Log in
+        Log in Now
       </Button>
     );
   }
 
+//Input tag is referred to creating controlled components
   render() {
     return (
       <Card>
@@ -56,7 +59,6 @@ class LoginForm extends Component {
             onChangeText={email => this.setState({ email })}
           />
         </CardSection>
-
         <CardSection>
           <Input
             secureTextEntry
@@ -66,14 +68,12 @@ class LoginForm extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </CardSection>
-
-        <Text style={styles.errorTextStyle}>
-          {this.state.error}
-        </Text>
-
         <CardSection>
           {this.renderButton()}
         </CardSection>
+        <Text style={styles.errorTextStyle}>
+          {this.state.error}
+        </Text>
       </Card>
     );
   }
@@ -81,9 +81,11 @@ class LoginForm extends Component {
 
 const styles = {
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 14,
     alignSelf: 'center',
-    color: 'red'
+    color: 'red',
+    paddingTop: 10,
+    paddingBottom: 10
   }
 };
 

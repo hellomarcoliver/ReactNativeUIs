@@ -3,11 +3,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Spinner, CardSection } from './components/common';
+import { Header, Button, Spinner, Card, CardSection } from './components/common';
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
   state = { loggedIn: null };
+  //null says "I don't know if you are loggedIn"
 
   componentWillMount() {
     firebase.initializeApp({
@@ -19,7 +20,8 @@ class App extends Component {
           messagingSenderId: '875076028626'
     });
 
-//whatch the callback onAuthStateChanged if user is loggedIn or loggedOut
+//watches the callback onAuthStateChanged if user is loggedIn or loggedOut
+// also called conditional rendering
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ loggedIn: true });
@@ -29,33 +31,32 @@ class App extends Component {
     });
   }
 
+//show follow up screen (to log out)
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
       return (
-        <View style={styles.topWrapper}>
+        <Card>
+          <View style={styles.topWrapper}>
           <CardSection>
             <Button onPress={() => firebase.auth().signOut()}>
-              Log Out
+              Log Out Now
             </Button>
           </CardSection>
         </View>
+      </Card>
       );
       case false:
       return <LoginForm />;
       default:
-      return (
-        <View style={styles.spinnerWrapper}>
-          <Spinner size="large" />
-        </View>
-      );
+      return <Spinner size="small" />;
     }
   }
 
   render() {
     return (
       <View>
-        <Header headerText="Authentication" />
+        <Header headerText="AuthenticationUI" />
         {this.renderContent()}
       </View>
     );
@@ -68,9 +69,6 @@ const styles = ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'green',
-  },
-  spinnerWrapper: {
-    marginTop: 100
   }
 });
 

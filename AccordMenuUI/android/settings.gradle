@@ -1,0 +1,3 @@
+rootProject.name = 'AccordMenuUI'
+
+include ':app'

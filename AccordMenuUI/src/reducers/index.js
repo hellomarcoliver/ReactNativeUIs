@@ -1,10 +1,10 @@
-/* Remember: Our state is our applications data */
-
+//Combine the two reducers:
+//LibraryReducer and SelectionReducer
 import { combineReducers } from 'redux';
 import LibraryReducer from './LibraryReducer';
+import SelectionReducer from './SelectionReducer';
 
-//we create one reducer which always returns an array or some amount of data
-// we need to import that reducer in app.js
 export default combineReducers({
-  dataToShow1: LibraryReducer
+  libraries: LibraryReducer,
+  selectedLibraryId: SelectionReducer
 });

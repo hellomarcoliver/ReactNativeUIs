@@ -1,5 +1,3 @@
-/* OK */
-
 import React from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
@@ -10,13 +8,14 @@ import LibraryList from './components/LibraryList';
 
 const App = () => {
   return (
-    //Provider tag can only have one child
+    //Here we create the redux store
+    //Note: Provider tag can only have one child
     //thats why we wrap all with a view tag
     <Provider store={createStore(reducers)}>
-      <View>
-        <Header headerText="Accordion Menu UI" />
+      <View style={{ flex: 1 }}>
+        <Header headerText="Tech Stack" />
         <LibraryList />
-    </View>
+      </View>
     </Provider>
   );
 };

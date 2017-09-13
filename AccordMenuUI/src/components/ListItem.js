@@ -1,19 +1,70 @@
-/* @flow */
-
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import {
+  Text,
+  TouchableWithoutFeedback,
+  View,
+  LayoutAnimation
+} from 'react-native';
+import { connect } from 'react-redux';
 import { CardSection } from './common';
-
+import * as actions from '../actions';
 
 class ListItem extends Component {
-  render() {
-    return (
-      <CardSection>
-        <Text>{this.props.library.title}</Text>
-      </CardSection>
-    );
+  componentWillUpdate() {
+    LayoutAnimation.spring();
   }
 
-}
+  renderDescription() {
+    const { library, expanded } = this.props;
 
-export default ListItem;
+    if (expanded) {
+      return (
+        <CardSection>
+          <Text style={{ flex: 1 }}>
+            {library.description}
+          </Text>
+        </CardSection>
+      );
+    }
+  }
+
+  render() {
+    const { titleStyle, descriptionStyle } = styles;
+    const { id, title } = this.props.library;
+
+    return (
+      <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
+          <View>
+            <CardSection>
+              <Text style={titleStyle}>
+                {title}
+              </Text>
+            </CardSection>
+            <View style={descriptionStyle}>
+              {this.renderDescription()}
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      );
+    }
+  }
+
+  const styles = {
+    titleStyle: {
+      fontSize: 18,
+      paddingLeft: 15
+    },
+    descriptionStyle: {
+      paddingLeft: 15,
+      paddingRight: 15
+    }
+  };
+
+  //mapStateToProps is the interface from state to components
+  const mapStateToProps = (state, ownProps) => {
+    const expanded = state.selectedLibraryId === ownProps.library.id;
+
+    return { expanded };
+  };
+
+  export default connect(mapStateToProps, actions)(ListItem);

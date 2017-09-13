@@ -1,7 +1,10 @@
-import { combineReducers } from 'redux';
+/* Remember: Our state is our applications data */
 
-//we create one reducer which always returns an array
-//we need to import that reducer in app.js
+import { combineReducers } from 'redux';
+import LibraryReducer from './LibraryReducer';
+
+//we create one reducer which always returns an array or some amount of data
+// we need to import that reducer in app.js
 export default combineReducers({
-  libraries: () => []
+  dataToShow1: LibraryReducer
 });

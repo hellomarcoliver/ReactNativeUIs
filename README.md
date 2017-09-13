@@ -17,3 +17,8 @@ AlbumsUI:
 SignUI:
 -------------
 ![Authentication UI Image](https://i.imgur.com/6iNcUf3.png)
+
+
+Accordion Menu UI with Redux:
+-------------
+![Accordion Menu UI Image](https://i.imgur.com/JMonw6u.png)

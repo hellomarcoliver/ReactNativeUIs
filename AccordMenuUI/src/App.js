@@ -13,7 +13,7 @@ const App = () => {
     //thats why we wrap all with a view tag
     <Provider store={createStore(reducers)}>
       <View style={{ flex: 1 }}>
-        <Header headerText="Tech Stack" />
+        <Header headerText="Accordion Menu UI" />
         <LibraryList />
       </View>
     </Provider>

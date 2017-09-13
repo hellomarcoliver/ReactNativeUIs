@@ -11,14 +11,14 @@ See a few example screenshots from components that are in this repository.
 
 AlbumsUI:
 -------------
-![Albums UI Image](https://i.imgur.com/enby829.png)
+![Albums UI Image](https://i.imgur.com/enby829l.png)
 
 
 SignUI:
 -------------
-![Authentication UI Image](https://i.imgur.com/6iNcUf3.png)
+![Authentication UI Image](https://i.imgur.com/6iNcUf3l.png)
 
 
 Accordion Menu UI with Redux:
 -------------
-![Accordion Menu UI Image](https://i.imgur.com/JMonw6u.png)
+![Accordion Menu UI Image](https://i.imgur.com/JMonw6ul.png)

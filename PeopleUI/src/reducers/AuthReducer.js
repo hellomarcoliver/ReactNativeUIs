@@ -11,6 +11,7 @@ import {
 const INITIAL_STATE = { email: '', password: '' };
 
 export default (state = INITIAL_STATE, action) => {
+  console.log(action);
   switch (action.type) {
     case EMAIL_CHANGED:
     console.log('email is changing...');
@@ -19,10 +20,10 @@ export default (state = INITIAL_STATE, action) => {
     //define the property email and give it a value
     //of action.payload and toss it on top
     return { ...state, email: action.payload };
-    case PASSWORD_CHANGED:
-    console.log('password is changing...');
+      case PASSWORD_CHANGED:
+      console.log('password is changing...');
     return { ...state, password: action.payload };
-    default:
-    return state;
+      default:
+      return state;
   }
 };

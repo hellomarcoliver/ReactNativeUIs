@@ -57,3 +57,16 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
       });
   };
 };
+
+//action to delete a employee card –gets called from the modal
+export const employeeDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
+      .then(() => {
+        Actions.pop({ type: 'reset' });
+      });
+  };
+};

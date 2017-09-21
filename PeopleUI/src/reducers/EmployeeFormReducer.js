@@ -17,6 +17,7 @@ export default (state = INITIAL_STATE, action) => {
       //because we are in a reducer, we always want to return a state
       //square braces is not an array!!! this is ES6 (key-interpolation)
       return { ...state, [action.payload.prop]: action.payload.value };
+    //this will clear out the input forms after save and edit
     case EMPLOYEE_CREATE:
       return INITIAL_STATE;
     case EMPLOYEE_SAVE_SUCCESS:

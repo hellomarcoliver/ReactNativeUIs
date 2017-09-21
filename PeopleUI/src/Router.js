@@ -20,6 +20,7 @@ const RouterComponent = () => {
         <Scene key="main">
           <Scene
             key="employeeList"
+            // onLeft={() => null}
             component={EmployeeList}
             title="Employees"
             rightTitle="Add"

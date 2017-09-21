@@ -3,12 +3,20 @@
 import React, { Component } from 'react';
 import { Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeCreate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
 //create a class based component since it can change
 class EmployeeCreate extends Component {
+  onButtonPress() {
+    const { name, phone, shift } = this.props;
+
+    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+  }
+
   render() {
+    // console.log(this.props.employee); //to test the click on the list item
+
     return (
       <Card>
 
@@ -24,7 +32,7 @@ class EmployeeCreate extends Component {
         <CardSection>
           <Input
             labelprop="Phone"
-            placeholderprop="4444444"
+            placeholderprop="444-444-4444"
             value={this.props.phone}
             onChangeText={text => this.props.employeeUpdate({ prop: 'phone', value: text })}
           />
@@ -47,7 +55,7 @@ class EmployeeCreate extends Component {
         </CardSection>
 
         <CardSection>
-          <Button>
+          <Button onPress={this.onButtonPress.bind(this)}>
             Create
           </Button>
         </CardSection>
@@ -70,4 +78,4 @@ const mapStateToProps = (state) => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
+export default connect(mapStateToProps, { employeeUpdate, employeeCreate })(EmployeeCreate);

@@ -12,7 +12,7 @@ class EmployeeForm extends Component {
         <CardSection>
           <Input
             labelprop="Name"
-            placeholderprop="Jane"
+            placeholderprop="Type name..."
             value={this.props.name}
             onChangeText={text => this.props.employeeUpdate({ prop: 'name', value: text })}
           />
@@ -21,14 +21,14 @@ class EmployeeForm extends Component {
         <CardSection>
           <Input
             labelprop="Phone"
-            placeholderprop="444-444-4444"
+            placeholderprop="Type phone number..."
             value={this.props.phone}
             onChangeText={text => this.props.employeeUpdate({ prop: 'phone', value: text })}
           />
         </CardSection>
 
         <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.pickerTextStyle}>Shift</Text>
+          <Text style={styles.pickerTextStyle}>Select Shift</Text>
           <Picker
             selectedValue={this.props.shift}
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
@@ -56,7 +56,6 @@ class EmployeeForm extends Component {
 
   const mapStateToProps = (state) => {
     const { name, phone, shift } = state.employeeForm;
-
     return { name, phone, shift };
   };
 

@@ -9,7 +9,7 @@ class EmployeeCreate extends Component {
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
-    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+    this.props.employeeCreate({ name, phone, shift: shift || 'Wednesday' });
   }
 
   render() {
@@ -19,7 +19,7 @@ class EmployeeCreate extends Component {
         <EmployeeForm {...this.props} />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
-            Create
+            Create & Close
           </Button>
         </CardSection>
       </Card>
@@ -30,7 +30,6 @@ class EmployeeCreate extends Component {
 
 const mapStateToProps = (state) => {
   const { name, phone, shift } = state.employeeForm;
-
   return { name, phone, shift };
 };
 

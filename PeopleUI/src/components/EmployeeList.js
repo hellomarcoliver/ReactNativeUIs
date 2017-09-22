@@ -12,7 +12,6 @@ class EmployeeList extends Component {
   //this lifecycle method will mount the data first
   componentWillMount() {
     this.props.employeesFetch();
-
     this.createDataSource(this.props);
   }
 
@@ -20,7 +19,6 @@ class EmployeeList extends Component {
     // nextProps are the next set of props that this component
     // will be rendered with
     // this.props is still the old set of props
-
     this.createDataSource(nextProps);
   }
 
@@ -28,7 +26,6 @@ class EmployeeList extends Component {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
-
     this.dataSource = ds.cloneWithRows(employees);
   }
 

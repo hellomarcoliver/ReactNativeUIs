@@ -13,11 +13,11 @@ const RouterComponent = () => {
     <Router>
       <Stack key="root" modal hideNavBar>
 
-        <Scene key="auth" initial title="Login" >
+        <Stack key="auth" initial title="Login" >
           <Scene key="login" component={LoginForm} />
-        </Scene>
+        </Stack>
 
-        <Scene key="main">
+        <Stack key="main">
           <Scene
             key="employeeList"
             // onLeft={() => null}
@@ -38,7 +38,7 @@ const RouterComponent = () => {
             component={EmployeeEdit}
             title="Employee Edit"
           />
-        </Scene>
+        </Stack>
 
     </Stack>
     </Router>

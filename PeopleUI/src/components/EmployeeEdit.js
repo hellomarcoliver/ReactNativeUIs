@@ -41,12 +41,12 @@ class EmployeeEdit extends Component {
         <EmployeeForm />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
-            Save any changes
+            Save Changes
           </Button>
         </CardSection>
         <CardSection>
           <Button onPress={this.onTextPress.bind(this)}>
-            Text schedule
+            Text Schedule
           </Button>
         </CardSection>
         <CardSection>
@@ -59,7 +59,7 @@ class EmployeeEdit extends Component {
           onAccept={this.onAccept.bind(this)}
           onDecline={this.onDecline.bind(this)}
         >
-            Are you sure you want to delete this card?
+            Are you sure you want to delete this entry?
           </Confirm>
         </Card>
       );

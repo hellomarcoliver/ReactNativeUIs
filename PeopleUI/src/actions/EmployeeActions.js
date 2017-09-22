@@ -7,9 +7,13 @@ import {
   EMPLOYEE_CREATE,
   EMPLOYEES_FETCH_SUCCESS,
   EMPLOYEE_SAVE_SUCCESS,
-  EMPLOYEE_FIRE_SUCCESS
+  EMPLOYEE_FIRE_SUCCESS,
+  EMPLOYEE_CLEAR_SUCCESS
 } from './types';
 
+export const employeeClear = () => {
+    return ({ type: EMPLOYEE_CLEAR_SUCCESS });
+};
 
 export const employeeUpdate = ({ prop, value }) => {
   return {

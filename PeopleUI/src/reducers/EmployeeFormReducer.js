@@ -2,7 +2,8 @@ import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
   EMPLOYEE_SAVE_SUCCESS,
-  EMPLOYEE_FIRE_SUCCESS
+  EMPLOYEE_FIRE_SUCCESS,
+  EMPLOYEE_CLEAR_SUCCESS
 } from '../actions/types';
 
 //not needed but informs other developers
@@ -24,6 +25,8 @@ export default (state = INITIAL_STATE, action) => {
     case EMPLOYEE_SAVE_SUCCESS:
       return INITIAL_STATE;
     case EMPLOYEE_FIRE_SUCCESS:
+      return INITIAL_STATE;
+    case EMPLOYEE_CLEAR_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;

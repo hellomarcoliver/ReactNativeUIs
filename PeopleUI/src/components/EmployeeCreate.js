@@ -9,7 +9,7 @@ class EmployeeCreate extends Component {
   componentWillMount() {
     this.props.employeeClear();
 }
-  
+
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
@@ -37,4 +37,7 @@ const mapStateToProps = (state) => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeUpdate, employeeCreate, employeeClear })(EmployeeCreate);
+export default connect(mapStateToProps, { employeeUpdate,
+  employeeCreate,
+  employeeClear
+})(EmployeeCreate);

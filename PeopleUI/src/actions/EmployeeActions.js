@@ -11,6 +11,8 @@ import {
   EMPLOYEE_CLEAR_SUCCESS
 } from './types';
 
+//form did not clear –had to adjust: EmployeeActions, types, EmployeeFormReducer, EmployeeCreate
+//https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/questions/1713830
 export const employeeClear = () => {
     return ({ type: EMPLOYEE_CLEAR_SUCCESS });
 };

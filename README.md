@@ -26,9 +26,9 @@ Accordion Menu UI with Redux:
 
 People UI with Redux:
 -------------
-![People UI Image]https://i.imgur.com/rJl2ZK8.gifv
+![People UI Image](https://i.imgur.com/rJl2ZK8.gif)
 
 
 Tinder UI Component 'Deck' with RN-Elements and RN-Animated:
 -------------
-![People UI Image](https://i.imgur.com/ERWORE8.gifv)
+![People UI Image](https://i.imgur.com/ERWORE8.gif)

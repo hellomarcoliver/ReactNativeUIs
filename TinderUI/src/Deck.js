@@ -147,5 +147,6 @@ export default class Deck extends Component {
       cardStyle: {
         position: 'absolute',
         width: SCREEN_WIDTH,
+        borderRadius: 20,
       },
     };

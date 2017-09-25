@@ -20,6 +20,7 @@ export default class App extends React.Component {
   renderCardSingle1(argument1) {
     return (
       <Card
+        containerStyle={{ borderRadius: 20 }}
         key={argument1.id} //is a unique token, otherwise an issue pops up
         image={{ uri: argument1.uri }}
         title={argument1.text}
@@ -30,6 +31,7 @@ export default class App extends React.Component {
           The lines get pushed down.
         </Text>
         <Button
+          buttonStyle={{ borderRadius: 30 }}
           icon={{ name: 'code' }}
           backgroundColor="red"
           title="View Now"

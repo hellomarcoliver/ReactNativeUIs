@@ -22,3 +22,13 @@ SignUI:
 Accordion Menu UI with Redux:
 -------------
 ![Accordion Menu UI Image](https://i.imgur.com/JMonw6ul.png)
+
+
+People UI with Redux:
+-------------
+![People UI Image]https://i.imgur.com/rJl2ZK8.gifv
+
+
+Tinder UI Component 'Deck' with RN-Elements and RN-Animated:
+-------------
+![People UI Image](https://i.imgur.com/ERWORE8.gifv)

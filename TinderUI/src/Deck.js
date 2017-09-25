@@ -13,6 +13,13 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 250
 
 export default class Deck extends Component {
+  //define a class propery in the constructor, to avid warning for non
+  //defined onSwipeRight and onSwipeLeft
+  static defaultProps = {
+    onSwipeRight: () => {},
+    onSwipeLeft: () => {}
+  }
+
   constructor(props) {
     super(props);
 
@@ -34,7 +41,7 @@ export default class Deck extends Component {
       }
     });
 
-    this.state = { panResponder, position };
+    this.state = { panResponder, position, index: 0 };
   }
 
   //makes it pop out of the screen
@@ -44,7 +51,17 @@ export default class Deck extends Component {
     Animated.timing(this.state.position, {
       toValue: { x: x * 2, y: 0 },
       duration: SWIPE_OUT_DURATION
-    }).start();
+    }).start(() => this.onSwipeComplete(direction));
+  }
+
+  onSwipeComplete(direction) {
+    const { onSwipeLeft, onSwipeRight, data } = this.props;
+    //go into our list of data, retrieve the record we are currently
+    // swiping, assign it to item
+    const argument2 = data[this.state.index];
+    direction === 'right' ? onSwipeRight(argument2) : onSwipeLeft(argument2);
+    this.state.position.setValue({ x: 0, y: 0 });
+    this.setState({ index: this.state.index + 1 });
   }
 
   //resets the card to 0,0
@@ -59,32 +76,42 @@ export default class Deck extends Component {
     const { position } = this.state;
     //interpolation; tie two controls together such as move and rotate
     const rotate = position.x.interpolate({
-      inputRange: [-SCREEN_WIDTH * 2.0, 0, SCREEN_WIDTH * 2.0],
+      inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
       outputRange: ['-120deg', '0deg', '120deg']
     });
 
     return {
       ...position.getLayout(),
-      transform: [{ rotate: rotate }] //can be shorten to rotate
+      transform: [{ rotate: rotate }] //can be shortend to rotate
     };
   }
 
   renderCardAll() {
-    return this.props.data.map((argument2, index) => {
-      if (index === 0) {
+    if (this.state.index >= this.props.data.length) {
+      return this.props.renderNoMoreCards();
+    }
+
+    return this.props.data.map((argument2, indexB) => {
+      if (indexB < this.state.index) { return null; }
+
+      if (indexB === this.state.index) {
         return (
           <Animated.View
             key={argument2.id}
-            style={this.getCardStyle()}
+            style={[this.getCardStyle(), styles.cardStyle]}
             {...this.state.panResponder.panHandlers}
-            >
+          >
               {this.props.renderCardSingle2(argument2)}
             </Animated.View>
           );
         }
 
-        return this.props.renderCardSingle2(argument2);
-      });
+        return (
+          <View key={argument2.id} style={styles.cardStyle}>
+            {this.props.renderCardSingle2(argument2)}
+          </View>
+        );
+      }).reverse(); //to make first card appear on top
     }
 
     render() {
@@ -97,8 +124,9 @@ export default class Deck extends Component {
   }
 
 
-  // const styles = StyleSheet.create({
-  //   container: {
-  //     flex: 1,
-  //   },
-  // });
+  const styles = {
+    cardStyle: {
+      position: 'absolute',
+      width: SCREEN_WIDTH,
+    },
+  };

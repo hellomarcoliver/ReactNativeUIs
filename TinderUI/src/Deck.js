@@ -4,6 +4,8 @@ import {
   Animated,
   PanResponder,
   Dimensions,
+  UIManager,
+  LayoutAnimation,
 } from 'react-native';
 
 //retrieve width of the screen so we can use it for inputRange
@@ -25,7 +27,7 @@ export default class Deck extends Component {
 
     const position = new Animated.ValueXY();
     const panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponder: () => true, //with 3 big callBacks
       onPanResponderMove: (evt, gestureState) => {
         position.setValue({ x: gestureState.dx, y: gestureState.dy });
       },
@@ -42,6 +44,20 @@ export default class Deck extends Component {
     });
 
     this.state = { panResponder, position, index: 0 };
+  }
+
+  componentWillReceive(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.setState({ index: 0 });
+    }
+  }
+
+
+  //tells react to animate every card when moving up 10px
+  //UIManager line is just for Android
+  componentWillUpdate() {
+    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+    LayoutAnimation.spring();
   }
 
   //makes it pop out of the screen
@@ -77,7 +93,7 @@ export default class Deck extends Component {
     //interpolation; tie two controls together such as move and rotate
     const rotate = position.x.interpolate({
       inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
-      outputRange: ['-120deg', '0deg', '120deg']
+      outputRange: ['-40deg', '0deg', '40deg']
     });
 
     return {
@@ -100,33 +116,36 @@ export default class Deck extends Component {
             key={argument2.id}
             style={[this.getCardStyle(), styles.cardStyle]}
             {...this.state.panResponder.panHandlers}
-          >
+            >
               {this.props.renderCardSingle2(argument2)}
             </Animated.View>
           );
         }
 
         return (
-          <View key={argument2.id} style={styles.cardStyle}>
-            {this.props.renderCardSingle2(argument2)}
-          </View>
+          <Animated.View
+            key={argument2.id}
+            style={[styles.cardStyle, { top: 10 * (indexB - this.state.index) }]}
+            >
+              {this.props.renderCardSingle2(argument2)}
+            </Animated.View>
+          );
+        }).reverse(); //to make first card appear on top
+      }
+
+      render() {
+        return (
+          <Animated.View>
+            {this.renderCardAll()}
+          </Animated.View>
         );
-      }).reverse(); //to make first card appear on top
+      }
     }
 
-    render() {
-      return (
-        <View>
-          {this.renderCardAll()}
-        </View>
-      );
-    }
-  }
 
-
-  const styles = {
-    cardStyle: {
-      position: 'absolute',
-      width: SCREEN_WIDTH,
-    },
-  };
+    const styles = {
+      cardStyle: {
+        position: 'absolute',
+        width: SCREEN_WIDTH,
+      },
+    };

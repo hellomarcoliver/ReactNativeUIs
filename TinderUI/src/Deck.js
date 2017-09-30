@@ -12,7 +12,7 @@ import {
 //SCREEN_WIDTH will not change, that's why its outside the component
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
-const SWIPE_OUT_DURATION = 250
+const SWIPE_OUT_DURATION = 250;
 
 export default class Deck extends Component {
   //define a class propery in the constructor, to avid warning for non

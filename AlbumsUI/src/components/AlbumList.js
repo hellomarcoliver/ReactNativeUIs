@@ -12,7 +12,7 @@ class AlbumList extends Component {
     componentWillMount() {
       // ASYNC HTTP Request to get albums from the API.
       // eslint-disable-next-line
-      fetch('https://api.myjson.com/bins/toutt')
+      fetch('https://api.myjson.com/bins/dzyn1')
       .then((response) => { return response.json() } )
       .catch((error) => console.warn("fetch error:", error))
       .then((responseData) => this.setState({ AlbumsUI: responseData }));

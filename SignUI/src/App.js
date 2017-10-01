@@ -1,7 +1,7 @@
 //this Component pulls it all together
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import firebase from 'firebase';
 import { Header, Button, Spinner, Card, CardSection } from './components/common';
 import LoginForm from './components/LoginForm';
@@ -40,7 +40,7 @@ class App extends Component {
           <View style={styles.topWrapper}>
           <CardSection>
             <Button onPress={() => firebase.auth().signOut()}>
-              Log Out Now
+              Log Out
             </Button>
           </CardSection>
         </View>
@@ -55,7 +55,11 @@ class App extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
+        <StatusBar
+          backgroundColor="blue"
+          barStyle="light-content"
+        />
         <Header headerText="AuthenticationUI" />
         {this.renderContent()}
       </View>
@@ -68,7 +72,16 @@ const styles = ({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green',
+    backgroundColor: '#89DFFE',
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  container: {
+    backgroundColor: '#89DFFE',
+    flex: 1,
+  },
+  topButtonWrapper: {
+    marginTop: 10,
   }
 });
 

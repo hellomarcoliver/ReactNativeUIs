@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Card, Button, Header } from 'react-native-elements';
 import Deck from './src/Deck';
 
 //dummy data
@@ -20,65 +20,90 @@ export default class App extends React.Component {
   renderCardSingle1(argument1) {
     return (
       <Card
-        containerStyle={{ borderRadius: 20 }}
+        containerStyle={{ borderRadius: 20, borderColor: '#89DFFE', borderWidth: 1, shadowOpacity: 0 }}
         key={argument1.id} //is a unique token, otherwise an issue pops up
         image={{ uri: argument1.uri }}
         title={argument1.text}
-      >
-        <Text style={styles.textStyle}>{argument1.text}</Text>
-        <Text style={{ marginBottom: 10 }}>
-          Here we can add some image subtitles. Was far as it goes.
-          The lines get pushed down.
-        </Text>
-        <Button
-          buttonStyle={{ borderRadius: 30 }}
-          icon={{ name: 'code' }}
-          backgroundColor="red"
-          title="View Now"
-        />
-      </Card>
-    );
+        >
+          <Text style={styles.textStyle}>{argument1.text}</Text>
+          <Text style={{ marginBottom: 10 }}>
+            Here we can add some image subtitles. Was far as it goes.
+            The lines get pushed down.
+          </Text>
+          <Button
+            buttonStyle={{ borderRadius: 30 }}
+            icon={{ name: 'code' }}
+            backgroundColor="#0095FE"
+            title="View Now"
+          />
+        </Card>
+
+      );
+    }
+
+    renderNoMoreCards() {
+      return (
+        <Card title="All Done!">
+          <Text style={{ marginBottom: 10 }}>
+            There is no more content.
+          </Text>
+          <Button
+            backgroundColor="#0095FE"
+            title="Get more cards!"
+          />
+        </Card>
+      );
+    }
+
+    //function to show all the stuff
+    render() {
+      return (
+        <View style={styles.screenStyle}>
+          <View>
+            <StatusBar
+              backgroundColor="red"
+              barStyle="light-content"
+            />
+            <Header
+              leftComponent={{ icon: 'menu', color: '#fff' }}
+              centerComponent={{ text: 'MY TINDER UI', style: { color: '#fff' } }}
+              rightComponent={{ icon: 'home', color: '#fff' }}
+              // statusBarProps={{ barStyle: 'default' }}
+              outerContainerStyles={{ backgroundColor: '#0095FE', borderBottomWidth: 0 }}
+              // innerContainerStyles={{ backgroundColor: '#000' }}
+
+            />
+          </View>
+          <View style={styles.container}>
+            <Deck
+              data={DATA}
+              renderCardSingle2={this.renderCardSingle1}
+              renderNoMoreCards={this.renderNoMoreCards}
+            />
+          </View>
+
+        </View>
+      );
+    }
+
+
   }
 
-  renderNoMoreCards() {
-    return (
-      <Card title="All Done!">
-        <Text style={{ marginBottom: 10 }}>
-          There is no more content.
-        </Text>
-        <Button
-          backgroundColor="red"
-          title="Get more cards!"
-        />
-      </Card>
-    );
-  }
-
-  //function to show all the stuff
-  render() {
-    return (
-      <View style={styles.container}>
-        <Deck
-          data={DATA}
-          renderCardSingle2={this.renderCardSingle1}
-          renderNoMoreCards={this.renderNoMoreCards}
-        />
-      </View>
-    );
-  }
-
-
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    marginTop: 80,
-  },
-  textStyle: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    color: '#000',
-    marginBottom: 10, }
-});
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#89DFFE',
+      marginTop: 80,
+    },
+    textStyle: {
+      fontWeight: 'bold',
+      fontSize: 16,
+      color: '#000',
+      marginBottom: 10,
+    },
+    screenStyle: {
+      flex: 1,
+      backgroundColor: '#89DFFE',
+      shadowColor: 'transparent'
+    }
+  });

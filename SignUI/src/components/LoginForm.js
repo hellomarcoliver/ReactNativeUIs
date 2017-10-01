@@ -51,6 +51,7 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
+        <Text style={styles.errorTextStyle}></Text>
         <CardSection>
           <Input
             placeholderprop="user@gmail.com"

@@ -19,7 +19,7 @@ const Header = (props) => {
 // add style to Header component
 const styles = {
   viewStyle: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#0095FE',
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
@@ -29,7 +29,8 @@ const styles = {
     shadowOpacity: 0.4
   },
   textStyle: {
-    fontSize: 20
+    fontSize: 20,
+    color: 'white',
   }
 };
 

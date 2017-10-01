@@ -10,33 +10,8 @@ Example Screens and Screenshots:
 See a few example screenshots from components that are in this repository.
 
 
-AlbumsUI:
--------------
-![Albums UI Image](https://media.giphy.com/media/xT1Ra0a1oiI7QirYY0/giphy.gif)
-
-
-SignUI:
--------------
-![Authentication UI Image](https://i.imgur.com/6iNcUf3l.png)
-
-
-Accordion Menu UI with Redux:
--------------
-![Accordion Menu UI Image](https://i.imgur.com/JMonw6ul.png)
-
-
-People UI with Redux:
--------------
-![People UI Image](https://media.giphy.com/media/l4EpbbLsZXgfaMQXC/giphy.gif)
-
-
-Tinder UI Component 'Deck' with RN-Elements and RN-Animated:
--------------
-![People UI Image](https://i.imgur.com/ERWORE8.gif)
-
-
 
 | Album List UI  | Contact List UI | Tinder UI |
-| ------------- | ------------- |
+| ------------- | ------------- | ------------- |
 | Content Cell  | Content Cell  | Content Cell |
-| ![Albums UI Image](https://media.giphy.com/media/xT1Ra0a1oiI7QirYY0/giphy.gif) | ![People UI Image](https://media.giphy.com/media/l4EpbbLsZXgfaMQXC/giphy.gif) | https://media.giphy.com/media/xUNd9WnxtD7Os1EXAc/giphy.gif |
+| ![Albums UI Image](https://media.giphy.com/media/xT1Ra0a1oiI7QirYY0/giphy.gif) | ![People UI Image](https://media.giphy.com/media/l4EpbbLsZXgfaMQXC/giphy.gif) | ![Tinder UI Image](https://media.giphy.com/media/xUNd9WnxtD7Os1EXAc/giphy.gif) |

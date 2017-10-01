@@ -33,3 +33,10 @@ People UI with Redux:
 Tinder UI Component 'Deck' with RN-Elements and RN-Animated:
 -------------
 ![People UI Image](https://i.imgur.com/ERWORE8.gif)
+
+
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| ![People UI Image](https://i.imgur.com/rJl2ZK8.gif)  | ![People UI Image](https://i.imgur.com/rJl2ZK8.gif)  |

@@ -20,7 +20,7 @@ class ListItem extends Component {
     if (expanded) {
       return (
         <CardSection>
-          <Text style={{ flex: 1 }}>
+          <Text style={{ flex: 1, lineHeight: 22, padding: 15, fontSize: 16 }}>
             {library.description}
           </Text>
         </CardSection>
@@ -29,7 +29,7 @@ class ListItem extends Component {
   }
 
   render() {
-    const { titleStyle, descriptionStyle } = styles;
+    const { titleStyle } = styles;
     const { id, title } = this.props.library;
 
     return (
@@ -40,7 +40,7 @@ class ListItem extends Component {
                 {title}
               </Text>
             </CardSection>
-            <View style={descriptionStyle}>
+            <View>
               {this.renderDescription()}
             </View>
           </View>
@@ -52,11 +52,7 @@ class ListItem extends Component {
   const styles = {
     titleStyle: {
       fontSize: 18,
-      paddingLeft: 15
-    },
-    descriptionStyle: {
       paddingLeft: 15,
-      paddingRight: 15
     }
   };
 

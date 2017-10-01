@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
@@ -12,12 +12,23 @@ const App = () => {
     //Note: Provider tag can only have one child
     //thats why we wrap all with a view tag
     <Provider store={createStore(reducers)}>
-      <View style={{ flex: 1 }}>
-        <Header headerText="Accordion Menu UI" />
+      <View style={styles.container}>
+        <StatusBar
+          backgroundColor="blue"
+          barStyle="light-content"
+        />
+        <Header headerText="Accordion Menu UI" style={{ backgroundColor: '#89DFFE' }}/>
         <LibraryList />
       </View>
     </Provider>
   );
+};
+
+const styles = {
+  container: {
+    flex: 1,
+    backgroundColor: '#89DFFE',
+  }
 };
 
 export default App;

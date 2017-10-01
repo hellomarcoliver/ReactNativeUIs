@@ -12,7 +12,7 @@ See a few example screenshots from components that are in this repository.
 
 AlbumsUI:
 -------------
-![Albums UI Image](https://i.imgur.com/enby829l.png)
+![Albums UI Image](https://media.giphy.com/media/xT1Ra0a1oiI7QirYY0/giphy.gif)
 
 
 SignUI:

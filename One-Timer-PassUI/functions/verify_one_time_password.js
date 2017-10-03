@@ -1,9 +1,29 @@
-// test if we have phone and code
-module.export = function(req, res) {
+// https://www.twilio.com/verification/features
+const admin = require('firebase-admin');
+
+module.exports = function(req, res) {
   if (!req.body.phone || !req.body.code) {
-    return res.status(422).send({ error: 'Please provide phone number and the code we sent you.' })
+    return res.status(422).send({ error: 'Phone and code must be provided'});
   }
 
-  const phone = String(req.body.phone).replace(/[^\d]/g, "");
-  const code = parseInt(code); // conert string in integer
+  const phone = String(req.body.phone).replace(/[^\d]/g, '');
+  const code = parseInt(req.body.code);
+
+  admin.auth().getUser(phone)
+  .then(() => {
+    const ref = admin.database().ref('users/' + phone);
+    ref.on('value', snapshot => {
+      ref.off();
+      const user = snapshot.val();
+
+      if (user.code !== code || !user.codeValid) {
+        return res.status(422).send({ error: 'Code not valid' });
+      }
+
+      ref.update({ codeValid: false });
+      admin.auth().createCustomToken(phone)
+      .then(token => res.send({ token: token }));
+    });
+  })
+  .catch((err) => res.status(422).send({ error: err }))
 }

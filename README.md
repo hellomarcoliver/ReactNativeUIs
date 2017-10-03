@@ -6,12 +6,13 @@ UI experiments in **React Native and Redux** (iOS only). I am adding basic UIs f
 * React Native Redux
 * React Native Router Flux
 * Firebase for authentification and simple data storage
-* Google Cloud Functions for temp. code storage
+* Google Cloud Functions for serverless one-time user authentification
 * React Native Communications for sending text messages
 * Twilio for sending/receiving text messages
 
 
 
+&nbsp;
 &nbsp;
 &nbsp;
 

@@ -1,9 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import firebase from 'firebase';
 import SignUpForm from './components/SignUpForm';
+import SignInForm from './components/SignInForm';
 import { Header } from 'react-native-elements';
 
 export default class App extends React.Component {
+  componentDidMount() {
+    const config = {
+      apiKey: "AIzaSyAlwJZgoCVHBUcVfj_rYNFq8leovy4FD2w",
+      authDomain: "one-time-pass-8f41a.firebaseapp.com",
+      databaseURL: "https://one-time-pass-8f41a.firebaseio.com",
+      projectId: "one-time-pass-8f41a",
+      storageBucket: "one-time-pass-8f41a.appspot.com",
+      messagingSenderId: "917477331800"
+    };
+    firebase.initializeApp(config);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -23,6 +37,7 @@ export default class App extends React.Component {
         </View>
         <View>
           <SignUpForm />
+          <SignInForm />
         </View>
       </View>
     );

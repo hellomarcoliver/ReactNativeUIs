@@ -7,25 +7,24 @@ import {
   StyleSheet,
 } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
+import firebase from 'firebase';
 import axios from 'axios';
 
 const ROOT_URL = 'https://us-central1-one-time-pass-8f41a.cloudfunctions.net';
 
 export default class MyComponent extends Component {
 
-  state = { phone: '' }; // initialize state object with ES7
+  state = { phone: '', code: '' }; // initialize state object with ES7
 
-  // make network request with promises, due to asynchronous calls
-  // this ES7 syntax makes the .bind method obsolete in onPress...
-  // try is for error handling if the network requests fail
   handleSubmit = async () => {
     try {
-      let response = await axios.post(`${ROOT_URL}/createUser`, { phone: this.state.phone })
-      console.log(response); // just to check
-      await axios.post(`${ROOT_URL}/requestOneTimePassword`, { phone: this.state.phone })
+      let { data } = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, {
+        phone: this.state.phone, code: this.state.code // we can destructure this.state if we like
+      });
+
+      firebase.auth().signInWithCustomToken(data.token);
     } catch (err) {
       console.log(err);
-      // this.setState({ error: 'Something was not right' });
     }
   }
 
@@ -33,7 +32,7 @@ export default class MyComponent extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ marginBottom: 20 }}>
+        <View style={{ marginBottom: 10 }}>
           <FormLabel>Enter Phone Number</FormLabel>
           <FormInput
             inputStyle={{ marginTop: 1 }}
@@ -41,6 +40,16 @@ export default class MyComponent extends Component {
             onChangeText={phone => this.setState({ phone }) } // normally just onChange
           />
         </View>
+
+        <View style={{ marginBottom: 20 }}>
+          <FormLabel>Enter Code</FormLabel>
+          <FormInput
+            inputStyle={{ marginTop: 1 }}
+            value={this.state.code} // pass val from state to input
+            onChangeText={code => this.setState({ code }) } // normally just onChange
+          />
+        </View>
+
         <Button
           onPress={this.handleSubmit}
           buttonStyle={{ borderRadius: 30, height: 40 }}
@@ -56,6 +65,6 @@ export default class MyComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    marginTop: 80,
+    marginTop: 30,
   },
 });

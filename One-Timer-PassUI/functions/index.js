@@ -1,4 +1,4 @@
-const admin = require('firebase-admin');
+const admin = require('firebase-admin'); // needed to manipulate our account
 const functions = require('firebase-functions');
 const createUser = require('./create_user');
 const serviceAccount = require('./service_account.json');
@@ -14,6 +14,9 @@ admin.initializeApp({
 });
 
 // anytime a http requests comes in run the fcuntion createUser
+// those functions get deployed on firebase, which we can then run 'remotely'
+// via POST method and http requests. With this, we do not have to run our
+// own server.
 exports.createUser = functions.https.onRequest(createUser);
 exports.requestOneTimePassword = functions.https.onRequest(requestOneTimePassword);
 exports.verifyOneTimePassword = functions.https.onRequest(verifyOneTimePassword);

@@ -11,7 +11,8 @@ import { navigation, screenProps } from 'react-navigation'
 
 export default class ReviewScreen extends Component {
   // customize the header for the ReviewScreen
-  // this is a class level property
+  // this is a class level property (don't have access to props)
+  // navigationOptions is an object
   static navigationOptions = ({ navigation }) => ({
       title: 'Review Jobs',
       headerRight: (

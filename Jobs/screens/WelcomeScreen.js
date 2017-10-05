@@ -15,10 +15,18 @@ const SLIDE_DATA = [
 ]
 
 export default class WelcomeScreen extends Component {
+
+  // navigation gets handed down as a prop to the WelcomeScreen
+  // on the navigation prop is the function navigate
+  // (WelcomeScreen is beeing render by the TabNavigator from React-Navigation)
+  onSlidesComplete = () => {
+    this.props.navigation.navigate('auth')
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <Slides data={SLIDE_DATA} />
+        <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete} />
       </View>
     )
   }

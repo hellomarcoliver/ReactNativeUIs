@@ -1,7 +1,9 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
+import store from './store/Index'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
+import { Provider } from 'react-redux'
 
 // import the two screens we are using in our MainNavigator
 import AuthScreen from './screens/AuthScreen'
@@ -46,9 +48,11 @@ export default class App extends React.Component {
     })
 
     return (
-      <View style={styles.container}>
+      <Provider store={store}>
+        <View style={styles.container}>
         <MainNavigator />
       </View>
+      </Provider>
     )
   }
 }

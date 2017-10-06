@@ -20,7 +20,7 @@ export default class Slides extends Component {
       return (
         <Button
           title="    Start now    "
-          raised
+          raised={false}
           containerViewStyle={{ borderRadius:30, margin: 20 }}
           buttonStyle={{ borderRadius: 30 }}
           // icon={{ name: 'settings' }}

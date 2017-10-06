@@ -15,6 +15,7 @@ import ReviewScreen from './screens/ReviewScreen'
 
 // this is the root component
 export default class App extends React.Component {
+  // AsyncStorage.removeItem('fb_token') // this will remove the FB token again
   render () {
     // this defines how we navigate through the screens
     // passing in an object 'MainNavigator'
@@ -35,23 +36,25 @@ export default class App extends React.Component {
         },
         {
           tabBarPosition: 'bottom',
-          lazyLoad: true,
+          lazy: true,
           animationEnabled: false
         })
       },
-    },
-    {
+    }, {
+      navigationOptions: {
+        tabBarVisible: false
+      },
       tabBarPosition: 'bottom',
       swipeEnabled: false,
-      lazyLoad: true,
+      lazy: true,
       animationEnabled: false
     })
 
     return (
       <Provider store={store}>
         <View style={styles.container}>
-        <MainNavigator />
-      </View>
+          <MainNavigator />
+        </View>
       </Provider>
     )
   }

@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
 import * as actions from '../actions/Index'
 
+// debugger;
+
 class AuthScreen extends Component {
   componentDidMount () {
+    AsyncStorage.removeItem('fb_token') // this will remove the FB token again
     this.props.facebookLogin()
     this.onAuthComplete(this.props)
   }
-
+  // this is a lifecycle method –gets executed whenever the
+  // component renders again. Needed to shuffled the token into
+  // the this component
   componentWillReceiveProps (nextProps) {
     this.onAuthComplete(nextProps)
   }
@@ -26,8 +31,8 @@ class AuthScreen extends Component {
   }
 }
 
-// function mapStateToProps ({ auth }) {
-//   return { token: auth.token }
-// }
+function mapStateToProps ({ auth }) {
+  return { token: auth.token }
+}
 
-export default connect(null, actions)(AuthScreen)
+export default connect(mapStateToProps, actions)(AuthScreen)

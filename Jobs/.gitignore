@@ -1,3 +1,4 @@
 node_modules/
 .expo/
 npm-debug.*
+Auth_Actions.js

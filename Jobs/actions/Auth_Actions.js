@@ -6,6 +6,7 @@ import { Facebook } from 'expo'
 // AsyncStorage.setItem('fb_token', token);
 // AsyncStorage.getItem('fb_token');
 
+// facebookLogin is an action creator
 // get the stuff, wait a bit and add it to 'let token'
 export const facebookLogin = () => async dispatch => {
   let token = await AsyncStorage.getItem('fb_token') // this returns a promise

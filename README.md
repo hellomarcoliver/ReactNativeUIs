@@ -31,4 +31,4 @@ See a few example screenshots from components that are in this repository.
 
 | Basic Sign In UI  | Accordion Menu List UI | One-Time-Password UI |
 | ------------- | ------------- | ------------- |
-| ![Sign In UI Image](https://media.giphy.com/media/3o6nV0y0LQ3B3uCXVS/giphy.gif) | ![Accordion Menu UI Image](https://media.giphy.com/media/xT1R9OHEwCaPFYkHYc/giphy.gif) | ![One-Time Pass Image] (https://media.giphy.com/media/l4EplcCd3QY8dgvC0/giphy.gif) |
+| ![Sign In UI Image](https://media.giphy.com/media/3o6nV0y0LQ3B3uCXVS/giphy.gif) | ![Accordion Menu UI Image](https://media.giphy.com/media/xT1R9OHEwCaPFYkHYc/giphy.gif) | ![One-Time Pass Image](https://media.giphy.com/media/l4EplcCd3QY8dgvC0/giphy.gif) |

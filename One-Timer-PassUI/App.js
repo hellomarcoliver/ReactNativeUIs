@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import firebase from 'firebase';
 import SignUpForm from './components/SignUpForm';
 import SignInForm from './components/SignInForm';
-import { Header } from 'react-native-elements';
+import { Header, Card } from 'react-native-elements';
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -21,38 +21,44 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        enableAutoAutomaticScroll='true'
-        keyboardOpeningTime={0}
-      >
-          <ScrollView>
-            <StatusBar
-              backgroundColor="red"
-              barStyle="light-content"
-            />
-            <Header
-              // leftComponent={{ icon: 'menu', color: '#fff' }}
-              centerComponent={{ text: 'One-Timer-Password-UI', style: { color: '#fff' } }}
-              // rightComponent={{ icon: 'home', color: '#fff' }}
-              // statusBarProps={{ barStyle: 'default' }}
-              outerContainerStyles={{ backgroundColor: '#0095FE', borderBottomWidth: 0 }}
-              // innerContainerStyles={{ backgroundColor: '#000' }}
-            />
-          </ScrollView>
+      <View style={styles.container}>
+        <View>
+          <StatusBar
+            backgroundColor="blue"
+            barStyle="light-content"
+          />
+          <Header
+            // leftComponent={{ icon: 'menu', color: '#fff' }}
+            centerComponent={{ text: 'One-Timer-Password-UI', style: { color: '#fff' } }}
+            // rightComponent={{ icon: 'home', color: '#fff' }}
+            // statusBarProps={{ barStyle: 'default' }}
+            outerContainerStyles={{ backgroundColor: '#0095FE', borderBottomWidth: 0 }}
+            // innerContainerStyles={{ backgroundColor: '#000' }}
+          />
+        </View>
+        <KeyboardAwareScrollView style={{ marginTop: 90 }}>
           <View>
             <SignUpForm />
             <SignInForm />
           </View>
         </KeyboardAwareScrollView>
-      );
-    }
+      </View>
+    );
   }
+}
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      // alignItems: 'center',
-      // justifyContent: 'center',
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#89DFFE',
+    // alignItems: 'center',
+    // justifyContent: 'flex-end',
+  }
+});
+
+// This apparently moves the screen when clicking on an input field
+// Didn't work last time I tested / 06.10.2017
+// <KeyboardAwareScrollView
+//   enableAutoAutomaticScroll={true}
+//   keyboardOpeningTime={0}
+//  >

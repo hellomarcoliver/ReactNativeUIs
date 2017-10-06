@@ -6,7 +6,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { FormLabel, FormInput, Button } from 'react-native-elements';
+import { FormLabel, FormInput, Button, Card } from 'react-native-elements';
 import firebase from 'firebase';
 import axios from 'axios';
 
@@ -30,8 +30,9 @@ export default class MyComponent extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-
+      <Card
+        containerStyle={{ borderWidth: 0 }}
+      >
         <View style={{ marginBottom: 10 }}>
           <FormLabel>Enter Phone Number</FormLabel>
           <FormInput
@@ -52,19 +53,29 @@ export default class MyComponent extends Component {
 
         <Button
           onPress={this.handleSubmit}
-          buttonStyle={{ borderRadius: 30, height: 40 }}
+          buttonStyle={{ borderRadius: 30, height: 40, marginBottom: 20 }}
           backgroundColor="#0095FE"
           title="View Now"
         />
-
-      </View>
+      </Card>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    marginTop: 90,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: { 
+//     marginTop: 20,
+//     marginBottom: 90,
+//     borderWidth: 1,
+//     borderRadius: 2,
+//     borderColor: '#DDD',
+//     borderBottomWidth: 0,
+//     shadowColor: '#000',
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.2,
+//     shadowRadius: 2,
+//     elevation: 1,
+//     marginLeft: 5,
+//     marginRight: 5,
+//   }
+// });

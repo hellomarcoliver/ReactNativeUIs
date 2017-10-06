@@ -1,14 +1,14 @@
 # ReactNativeUIs
 
-UI experiments in **React Native and Redux** (iOS only). I am adding basic UIs for general use within the next three months. The examples you see below use some common technologies such as:
+UI experiments in **React Native and Redux** (iOS only). I am adding basic UIs and Business Logic for general use within the next three months. The examples you see below use some common technologies such as:
 
 * React Native
 * React Native Redux
 * React Native Router Flux
-* EXPO
+* Expo.io
 * React Native Animations
-* Firebase for authentification and simple data storage
-* Google Cloud Functions for serverless one-time user authentification
+* Firebase for authentication and simple data storage
+* Google Cloud Functions for serverless one-time user authentication
 * React Native Communications for sending text messages
 * Twilio API for sending/receiving text messages
 

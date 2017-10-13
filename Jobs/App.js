@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, AsyncStorage } from 'react-native'
 import store from './store/Index'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
@@ -15,7 +15,12 @@ import ReviewScreen from './screens/ReviewScreen'
 
 // this is the root component
 export default class App extends React.Component {
-  // AsyncStorage.removeItem('fb_token') // this will remove the FB token again
+
+  // note –in case you need to clear the FB token use this:
+  // componentWillMount() {
+  //   AsyncStorage.removeItem('fb_token')
+  // }
+
   render () {
     // this defines how we navigate through the screens
     // passing in an object 'MainNavigator'

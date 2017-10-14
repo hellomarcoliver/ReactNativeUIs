@@ -10,7 +10,7 @@ const JOB_QUERY_PARAMS = {
   format: 'json',
   v: '2',
   latlong: 1,
-  radius: 10,
+  radius: 20,
   q: 'javascript'
 }
 
@@ -19,6 +19,7 @@ const buildJobsUrl = zipCode => {
   return `${JOB_ROOT_URL}${query}`
 }
 
+// the 'callback' stems from the onButtonPress
 export const fetchJobs = (region, callback) => async dispatch => {
   try {
     let zipCode = await reverseGeocode(region)
@@ -26,6 +27,7 @@ export const fetchJobs = (region, callback) => async dispatch => {
     let { data } = await axios.get(url)
     dispatch({ type: FETCH_JOBS, payload: data })
     console.log(data)
+    callback()
   } catch (e) {
     console.error(e)
   }

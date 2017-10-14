@@ -33,8 +33,11 @@ class MapScreen extends Component {
     this.setState({region})
   }
 
+  // we are passing a callback to fetchJobs
   onButtonPress = () => {
-    this.props.fetchJobs(this.state.region)
+    this.props.fetchJobs(this.state.region, () => {
+      this.props.navigation.navigate('deck')
+    })
   }
 
   render () {
@@ -55,7 +58,7 @@ class MapScreen extends Component {
         <View style={styles.buttonContainer}>
           <Button
             large
-            title="Search This Area"
+            title="Show Jobs In This Area"
             backgroundColor="#009688"
             icon={{ name: 'search' }}
             onPress={this.onButtonPress} // leave bind.this out 'cause we use arrow function'

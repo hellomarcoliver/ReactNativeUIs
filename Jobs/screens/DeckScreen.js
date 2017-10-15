@@ -7,14 +7,12 @@ import Swipe from '../components/Swipe';
 import * as actions from '../actions/Index';
 
 class DeckScreen extends Component {
-  // static navigationOptions = {
-  //   title: 'Jobs',
-  //   tabBar: {
-  //     icon: ({ tintColor }) => {
-  //       return <Icon name="description" size={30} color={tintColor} />;
-  //     }
-  //   }
-  // }
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Jobs',
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name="description" size={20} color={tintColor} />;
+    }
+  })
 
   renderCard(job) {
     const initialRegion = {
@@ -29,7 +27,7 @@ class DeckScreen extends Component {
         title={job.jobtitle}
         titleStyle={{ height: 40 }}
         containerStyle={{ borderRadius: 20, borderColor: '#89DFFE', borderWidth: 1, shadowOpacity: 0 }}
-      >
+        >
           <View style={{ height: 170 }}>
             <MapView
               scrollEnabled={false} // so that user input does not pan/zoom the map
@@ -50,6 +48,9 @@ class DeckScreen extends Component {
         );
       }
 
+      // converted this into an arrow function to avoid binding 'this'
+      // to the below function. So 'this' is refering to DeckScreen render Component
+      // and not just the function. See onPress event below.
       renderNoMoreCards = () => {
         return (
           <Card title="No More Jobs">

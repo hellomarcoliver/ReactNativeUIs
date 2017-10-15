@@ -21,7 +21,7 @@ class SettingsScreen extends Component {
       <View>
         <Button
           title="Reset All Liked Jobs"
-          buttonStyle={{ borderRadius: 30 }}
+          buttonStyle={{ borderRadius: 30, marginTop: 20 }}
           large
           icon={{ name: 'delete-forever' }}
           backgroundColor="#F44336"

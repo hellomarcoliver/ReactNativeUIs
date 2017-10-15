@@ -43,8 +43,14 @@ export default class App extends React.Component {
           tabBarPosition: 'bottom',
           lazy: true,
           animationEnabled: false
+        }, {
+          labelStyle: {
+            fontSize: 3,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }
         })
-      },
+      }
     }, {
       navigationOptions: {
         tabBarVisible: false

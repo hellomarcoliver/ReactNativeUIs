@@ -7,11 +7,19 @@ import {
 } from 'react-native'
 import { MapView } from 'expo'
 import { connect } from 'react-redux'
-import { Button } from 'react-native-elements'
+import { navigation, screenProps } from 'react-navigation'
+import { Button, Icon } from 'react-native-elements'
 
 import * as actions from '../actions/Index'
 
 class MapScreen extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Job Map 1',
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name="my-location" size={20} color={tintColor} />;
+    }
+  })
+
   // set default state for map with region
   state = {
     mapLoaded: false,

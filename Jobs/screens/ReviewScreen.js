@@ -17,16 +17,16 @@ class ReviewScreen extends Component {
   // this is a class level property (don't have access to props)
   // navigationOptions is an object
   static navigationOptions = ({ navigation }) => ({
-    title: 'Review Jobs',
-    tabBarIcon: ({ tintColor }) => {
-      return <Icon name="favorite" size={20} color={tintColor} />;
+    title: 'Liked Jobs',
+    tabBarIcon: ({ tintColor, focused }) => {
+      return <Icon name="favorite" size={20} color={focused ? '#0095FE' : 'grey'} />;
     },
     headerRight: (
       <Button
         title="Settings"
         onPress={() => { navigation.navigate('settings') }}
-        buttonStyle={{ borderRadius: 30, height: 30 }}
-        icon={{ name: 'settings' }}
+        buttonStyle={{ borderRadius: 30, height: 30, width: 80 }}
+        // icon={{ name: 'settings' }}
         backgroundColor="#0095FE"
       />
     )

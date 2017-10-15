@@ -15,12 +15,10 @@ import ReviewScreen from './screens/ReviewScreen'
 
 // this is the root component
 export default class App extends React.Component {
-
   // note –in case you need to clear the FB token use this:
   // componentWillMount() {
   //   AsyncStorage.removeItem('fb_token')
   // }
-
   render () {
     // this defines how we navigate through the screens
     // passing in an object 'MainNavigator'
@@ -38,16 +36,13 @@ export default class App extends React.Component {
               settings: { screen: SettingsScreen }
             })
           }
-        },
-        {
+        }, {
           tabBarPosition: 'bottom',
           lazy: true,
-          animationEnabled: false
-        }, {
-          labelStyle: {
-            fontSize: 3,
-            justifyContent: 'center',
-            alignItems: 'center',
+          animationEnabled: false,
+          tabBarOptions: {
+            labelStyle: { fontSize: 12 },
+            showIcon: true
           }
         })
       }
@@ -60,7 +55,6 @@ export default class App extends React.Component {
       lazy: true,
       animationEnabled: false
     })
-
     return (
       <Provider store={store}>
         <View style={styles.container}>

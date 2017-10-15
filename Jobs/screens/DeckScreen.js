@@ -25,10 +25,10 @@ class DeckScreen extends Component {
     return (
       <Card
         title={job.jobtitle}
-        titleStyle={{ height: 40 }}
+        titleStyle={{ height: 33 }}
         containerStyle={{ borderRadius: 20, borderColor: '#89DFFE', borderWidth: 1, shadowOpacity: 0 }}
         >
-          <View style={{ height: 170 }}>
+          <View style={{ height: 120 }}>
             <MapView
               scrollEnabled={false} // so that user input does not pan/zoom the map
               style={{ flex: 1 }} // this can be flex: 1
@@ -41,7 +41,7 @@ class DeckScreen extends Component {
               <Text>{job.company}</Text>
               <Text>{job.formattedRelativeTime}</Text>
             </View>
-            <Text style={{ height: 80 }}>
+            <Text style={{ height: 100 }}>
               {job.snippet.replace(/<b>/g, '').replace(/<\/b/g, '')}
             </Text>
           </Card>
@@ -68,7 +68,7 @@ class DeckScreen extends Component {
 
       render() {
         return (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 40 }}>
             <Swipe
               data={this.props.jobs}
               renderCard={this.renderCard} // no brackets to delay function call

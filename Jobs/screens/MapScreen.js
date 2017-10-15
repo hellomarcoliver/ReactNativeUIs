@@ -57,9 +57,10 @@ class MapScreen extends Component {
         />
         <View style={styles.buttonContainer}>
           <Button
+            buttonStyle={{ borderRadius: 30 }}
             large
             title="Show Jobs In This Area"
-            backgroundColor="#009688"
+            backgroundColor="#03A9F4"
             icon={{ name: 'search' }}
             onPress={this.onButtonPress} // leave bind.this out 'cause we use arrow function'
           />

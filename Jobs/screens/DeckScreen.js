@@ -25,66 +25,72 @@ class DeckScreen extends Component {
     };
 
     return (
-      <Card title={job.jobtitle}>
-        <View style={{ height: 300 }}>
-          <MapView
-            scrollEnabled={false} // so that user input does not pan/zoom the map
-            style={{ flex: 1 }}
-            cacheEnabled={Platform.OS === 'android' ? true : false} // render as static image
-            initialRegion={initialRegion}
-            >
-            </MapView>
+      <Card
+        title={job.jobtitle}
+        titleStyle={{ height: 40 }}
+        containerStyle={{ borderRadius: 20, borderColor: '#89DFFE', borderWidth: 1, shadowOpacity: 0 }}
+      >
+          <View style={{ height: 170 }}>
+            <MapView
+              scrollEnabled={false} // so that user input does not pan/zoom the map
+              style={{ flex: 1 }} // this can be flex: 1
+              cacheEnabled={Platform.OS === 'android' ? true : false} // render as static image
+              initialRegion={initialRegion}
+              >
+              </MapView>
+            </View>
+            <View style={styles.detailWrapper}>
+              <Text>{job.company}</Text>
+              <Text>{job.formattedRelativeTime}</Text>
+            </View>
+            <Text style={{ height: 80 }}>
+              {job.snippet.replace(/<b>/g, '').replace(/<\/b/g, '')}
+            </Text>
+          </Card>
+        );
+      }
+
+      renderNoMoreCards = () => {
+        return (
+          <Card title="No More Jobs">
+            <Button
+              buttonStyle={{ borderRadius: 30 }}
+              title="Back To Map"
+              large
+              icon={{ name: 'my-location' }}
+              backgroundColor="#03A9F4"
+              onPress={() => this.props.navigation.navigate('map')}
+            />
+          </Card>
+        );
+      }
+
+      render() {
+        return (
+          <View style={{ marginTop: 10 }}>
+            <Swipe
+              data={this.props.jobs}
+              renderCard={this.renderCard} // no brackets to delay function call
+              renderNoMoreCards={this.renderNoMoreCards}
+              onSwipeRight={job => this.props.likeJob(job)}
+              keyProp="jobkey"
+            />
           </View>
-          <View style={styles.detailWrapper}>
-            <Text>{job.company}</Text>
-            <Text>{job.formattedRelativeTime}</Text>
-          </View>
-          <Text style={{ height: 22 }}>
-            {job.snippet.replace(/<b>/g, '').replace(/<\/b/g, '')}
-          </Text>
-        </Card>
-      );
+        );
+      }
     }
 
-    renderNoMoreCards = () => {
-      return (
-        <Card title="No More Jobs">
-          <Button
-            title="Back To Map"
-            large
-            icon={{ name: 'my-location' }}
-            backgroundColor="#03A9F4"
-            onPress={() => this.props.navigation.navigate('map')}
-          />
-        </Card>
-      );
+    const styles = {
+      detailWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 10,
+        marginTop: 10
+      }
+    };
+
+    function mapStateToProps({ jobs }) {
+      return { jobs: jobs.results };
     }
 
-    render() {
-      return (
-        <View style={{ marginTop: 10 }}>
-          <Swipe
-            data={this.props.jobs}
-            renderCard={this.renderCard} // no brackets to delay function call
-            renderNoMoreCards={this.renderNoMoreCards}
-            onSwipeRight={job => this.props.likeJob(job)}
-            keyProp="jobkey"
-          />
-        </View>
-      );
-    }
-  }
-
-  const styles = {
-    detailWrapper: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginBottom: 10
-    }
-  };
-
-  function mapStateToProps({ jobs }) {
-    return { jobs: jobs.results };
-  }
-
-  export default connect(mapStateToProps, actions)(DeckScreen);
+    export default connect(mapStateToProps, actions)(DeckScreen);

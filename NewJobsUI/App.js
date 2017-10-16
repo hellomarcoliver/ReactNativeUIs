@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, AsyncStorage } from 'react-native'
+import { StyleSheet, View, AsyncStorage, Alert } from 'react-native'
+import registerForNotifications from './services/push_notifications'
 import store from './store/Index'
 import { TabNavigator, StackNavigator } from 'react-navigation'
-import { Constants } from 'expo'
+import { Constants, Notifications } from 'expo'
 import { Provider } from 'react-redux'
 
 // import the two screens we are using in our MainNavigator
@@ -15,6 +16,23 @@ import ReviewScreen from './screens/ReviewScreen'
 
 // this is the root component
 export default class App extends React.Component {
+  componentDidMount () {
+    registerForNotifications()
+
+    // the callback you can use to lead user somewhere else ...
+    Notifications.addListener((notification) => {
+      const { data: { text }, origin } = notification
+
+      if (origin === 'received' && text) {
+        Alert.alert(
+          'New Push Notification',
+          text,
+          [{ text: 'Ok.' }]
+        )
+      }
+    })
+  }
+
   // note –in case you need to clear the FB token use this:
   // componentWillMount() {
   //   AsyncStorage.removeItem('fb_token')

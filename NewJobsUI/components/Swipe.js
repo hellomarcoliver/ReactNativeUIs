@@ -55,6 +55,7 @@ class Swipe extends Component {
   }
 
   forceSwipe(direction) {
+    // a ternary expression
     const x = direction === 'right' ? SCREEN_WIDTH : -SCREEN_WIDTH;
     Animated.timing(this.state.position, {
       toValue: { x, y: 0 },

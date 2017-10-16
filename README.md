@@ -11,6 +11,7 @@ UI experiments in **React Native and Redux** (iOS only). I am adding basic UIs a
 * Google Cloud Functions for serverless one-time user authentication
 * React Native Communications for sending text messages
 * Twilio API for sending/receiving text messages
+* Redux Persist to rehydrate a redux store (keep user data 'alive')
 
 
 

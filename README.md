@@ -13,7 +13,7 @@ UI experiments in **React Native and Redux** (iOS only). I am adding basic UIs a
 * Twilio API for sending/receiving text messages
 * Redux Persist to rehydrate a redux store (keep user data 'alive')
 * Push Notifications with expo.io
-* AirBnB Maps
+* AirBnB React-Native Maps
 
 
 

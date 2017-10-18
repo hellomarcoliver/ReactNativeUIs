@@ -2,7 +2,7 @@
 
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import Home from './screens/Home';
+import CurrencyList from './screens/CurrencyList';
 
 // creating variables for styles
 EStyleSheet.build({
@@ -11,9 +11,12 @@ EStyleSheet.build({
   $border: '#E2E2E2',
   $inputText: '#797979',
   $lightGrey: '#F0F0F0',
+  $darkText: '#343434',
+  // this adds an outline to all components for better debugging
+  outline: 0,
 });
 
-export default () => <Home />;
+export default () => <CurrencyList />;
 
 // new version
 // const App = () => (

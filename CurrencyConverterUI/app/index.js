@@ -1,27 +1,19 @@
-/* @flow */
+// Define root component and set global backgroundcolor
 
-import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Home from './screens/Home';
 
+// creating variables for styles
 EStyleSheet.build({
   $primaryBlue: '#4F6D7A',
+  $white: '#FFFFFF',
+  $border: '#E2E2E2',
+  $inputText: '#797979',
+  $lightGrey: '#F0F0F0',
 });
 
-export default class MyComponent extends Component {
-  render() {
-    return (
-      <Home />
-    );
-  }
-}
-
-
+export default () => <Home />;
 
 // new version
 // const App = () => (
@@ -29,7 +21,6 @@ export default class MyComponent extends Component {
 //     <Text>Open up App to start working on your app! OK</Text>
 //   </View>
 // );
-
 
 // old function
 // export default class App extends React.Component {

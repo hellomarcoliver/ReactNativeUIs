@@ -19,7 +19,7 @@ class Logo extends Component {
       imageWidth: new Animated.Value(styles.$largeImageSize),
     };
   }
-  // Androind needs a '..did..' mount to animate the logo, hence we need extra code
+
   componentDidMount() {
     const name = Platform.OS === 'ios' ? 'Will' : 'Did';
     this.keyboardDidShowListener = Keyboard.addListener(

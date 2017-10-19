@@ -1,11 +1,11 @@
-// define Home Screen and pull in Container
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { StatusBar, KeyboardAvoidingView } from 'react-native';
 
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
 import { InputWithButton } from '../components/TextInput';
-import { ClearButton } from '../components/Buttons';
+import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header';
 
@@ -17,24 +17,32 @@ const TEMP_LAST_CONVERTED = new Date();
 const TEMP_CONVERSION_RATE = 0.79739;
 
 class Home extends Component {
+  static propTypes = {
+    navigation: PropTypes.object,
+  };
+
   handleChangeText = () => {
     console.log('change text');
   };
 
   handlePressBaseCurrency = () => {
-    console.log('press base currency');
+    this.props.navigation.navigate('CurrencyList', { title: 'Base Currency' });
   };
 
   handlePressQuoteCurrency = () => {
-    console.log('press quote currency');
+    this.props.navigation.navigate('CurrencyList', { title: 'Quote Currency' });
   };
 
   handleSwapCurrency = () => {
-    console.log('press swap currency');
+    console.log('handle swap currency');
+  };
+
+  handleSwapCurrency = () => {
+    console.log('handle swap currency');
   };
 
   handleOptionsPress = () => {
-    console.log('handle options press');
+    this.props.navigation.navigate('Options');
   };
 
   render() {
@@ -63,7 +71,7 @@ class Home extends Component {
             quote={TEMP_QUOTE_CURRENCY}
             conversionRate={TEMP_CONVERSION_RATE}
           />
-          <ClearButton text="Reverse Currencies" onPress={this.handleSwapCurrency} />
+          <ClearButton onPress={this.handleSwapCurrency} text="Reverse Currencies" />
         </KeyboardAvoidingView>
       </Container>
     );

@@ -5,20 +5,19 @@ const INPUT_HEIGHT = 48;
 const BORDER_RADIUS = 4;
 
 export default EStyleSheet.create({
-  // local variables for the button modifiers
   $buttonBackgroundColorBase: '$white',
   $buttonBackgroundColorModifier: 0.1,
   container: {
     backgroundColor: '$white',
     width: '90%',
     height: INPUT_HEIGHT,
-    flexDirection: 'row', // default is column
+    flexDirection: 'row',
     alignItems: 'center',
     borderRadius: BORDER_RADIUS,
     marginVertical: 11,
   },
   containerDisabled: {
-    backgroundColor: '$lightGrey',
+    backgroundColor: '$lightGray',
   },
   buttonContainer: {
     height: INPUT_HEIGHT,

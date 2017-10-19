@@ -1,3 +1,5 @@
+// define Home Screen and pull in Container componnent
+// amongts many other components from project folder
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { StatusBar, KeyboardAvoidingView } from 'react-native';

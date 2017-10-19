@@ -1,24 +1,35 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform } from 'react-native';
+import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ListItem, Separator } from '../components/List';
+import { connectAlert } from '../components/Alert';
 
 const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';
 const ICON_SIZE = 23;
 
+// the Options component gets wrapped with connectAlert below (export..)
 class Options extends Component {
   static propTypes = {
     navigation: PropTypes.object,
+    alertWithType: PropTypes.func,
   };
 
   handlePressThemes = () => {
+    console.log('press themes (Options.js)');
     this.props.navigation.navigate('Themes');
   };
 
   handlePressSite = () => {
-    console.log('press site');
+    console.log('press site (Options.js)');
+    Linking.openURL('httpss://fixer.io').catch(() =>
+      this.props.alertWithType(
+        'info',
+        'Sorry!',
+        'This code is in Options.js and is connected to the AlertProvider component.',
+      ),
+    );
   };
 
   render() {
@@ -43,4 +54,6 @@ class Options extends Component {
     );
   }
 }
-export default Options;
+// pass Option as a function to the connectAlert function
+// with this, we also get access to alertWithType – see top of page
+export default connectAlert(Options);

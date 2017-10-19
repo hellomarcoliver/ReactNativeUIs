@@ -6,6 +6,8 @@ import CurrencyList from '../screens/CurrencyList';
 import Options from '../screens/Options';
 import Themes from '../screens/Themes';
 
+// this is nested inside the route navigator below
+// another single screen StackNavigator: HomeStack
 const HomeStack = StackNavigator(
   {
     Home: {
@@ -28,11 +30,13 @@ const HomeStack = StackNavigator(
       },
     },
   },
+  // adding another configuration object
   {
-    headerMode: 'screen',
+    headerMode: 'screen', // making the drawer come in smoothly
   },
 );
 
+// another single screen StackNavigator: CurrencyListStack
 const CurrencyListStack = StackNavigator({
   CurrencyList: {
     screen: CurrencyList,
@@ -42,6 +46,8 @@ const CurrencyListStack = StackNavigator({
   },
 });
 
+// the route navigator
+// this actually gets passed on into (app)index.js
 export default StackNavigator(
   {
     Home: {
@@ -51,8 +57,10 @@ export default StackNavigator(
       screen: CurrencyListStack,
     },
   },
+  // adding another configuration object
   {
     mode: 'modal',
+    // removes 2nd header, which is caused by nesting the navigators
     headerMode: 'none',
     cardStyle: { paddingTop: StatusBar.currentHeight },
   },

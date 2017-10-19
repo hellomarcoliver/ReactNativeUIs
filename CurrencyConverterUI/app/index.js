@@ -1,7 +1,10 @@
+// Define root component and set colors globally
+
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import Navigator from './config/routes';
+import { AlertProvider } from './components/Alert';
 
 EStyleSheet.build({
   $primaryBlue: '#4F6D7A',
@@ -14,6 +17,13 @@ EStyleSheet.build({
   $border: '#E2E2E2',
   $inputText: '#797979',
   $darkText: '#343434',
+
+  // this adds an outline to all components for better debugging
+  outline: 0,
 });
 
-export default () => <Navigator />;
+export default () => (
+  <AlertProvider>
+    <Navigator />
+  </AlertProvider>
+);

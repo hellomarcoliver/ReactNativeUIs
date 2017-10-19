@@ -6,9 +6,7 @@ import color from 'color';
 import styles from './styles';
 
 const InputWithButton = (props) => {
-  const underlayColor = color(styles.$buttonBackgroundColorBase).darken(
-    styles.$buttonBackgroundColorModifier,
-  );
+  const underlayColor = color(styles.$buttonBackgroundColorBase).darken(styles.$buttonBackgroundColorModifier);
 
   const containerStyles = [styles.container];
   if (props.editable === false) {
@@ -30,6 +28,8 @@ const InputWithButton = (props) => {
   );
 };
 
+// define the type of the prop so we can easily debug later
+// see: https://www.npmjs.com/package/prop-types
 InputWithButton.propTypes = {
   onPress: PropTypes.func,
   buttonText: PropTypes.string,

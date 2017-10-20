@@ -11,18 +11,15 @@ const ListItem = ({
   checkmark = true,
   selected = false,
   visible = true,
-  // this tells Options.js to render/not-render the icons
   customIcon = null,
   iconBackground,
 }) => (
   <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
     <View style={styles.row}>
       <Text style={styles.text}>{text}</Text>
-      {selected ? (
-        <Icon visible={visible} checkmark={checkmark} iconBackground={iconBackground} />
-      ) : (
-        <Icon />
-      )}
+      {selected
+        ? <Icon visible={visible} checkmark={checkmark} iconBackground={iconBackground} />
+        : <Icon />}
       {customIcon}
     </View>
   </TouchableHighlight>

@@ -9,7 +9,6 @@ const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';
 const ICON_SIZE = 23;
 
-// the Options component gets wrapped with connectAlert below (export..)
 class Options extends Component {
   static propTypes = {
     navigation: PropTypes.object,
@@ -17,18 +16,12 @@ class Options extends Component {
   };
 
   handlePressThemes = () => {
-    console.log('press themes (Options.js)');
     this.props.navigation.navigate('Themes');
   };
 
   handlePressSite = () => {
-    console.log('press site (Options.js)');
-    Linking.openURL('httpss://fixer.io').catch(() =>
-      this.props.alertWithType(
-        'info',
-        'Sorry!',
-        'This code is in Options.js and is connected to the AlertProvider component.',
-      ),
+    Linking.openURL('http://fixer.io').catch(() =>
+      this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."),
     );
   };
 
@@ -54,6 +47,4 @@ class Options extends Component {
     );
   }
 }
-// pass Option as a function to the connectAlert function
-// with this, we also get access to alertWithType – see top of page
 export default connectAlert(Options);

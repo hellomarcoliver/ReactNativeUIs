@@ -1,7 +1,6 @@
 import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-// this divides imageWidth size by 2
 const imageWidth = Dimensions.get('window').width / 2;
 
 export default EStyleSheet.create({
@@ -23,7 +22,6 @@ export default EStyleSheet.create({
     tintColor: '$primaryBlue',
   },
   text: {
-    // variable $white defined in main index.js
     color: '$white',
     fontSize: 28,
     letterSpacing: -0.5,

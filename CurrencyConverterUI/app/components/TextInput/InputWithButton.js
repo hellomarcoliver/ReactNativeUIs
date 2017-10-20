@@ -6,11 +6,18 @@ import color from 'color';
 import styles from './styles';
 
 const InputWithButton = (props) => {
-  const underlayColor = color(styles.$buttonBackgroundColorBase).darken(styles.$buttonBackgroundColorModifier);
+  const underlayColor = color(styles.$buttonBackgroundColorBase).darken(
+    styles.$buttonBackgroundColorModifier,
+  );
 
   const containerStyles = [styles.container];
   if (props.editable === false) {
     containerStyles.push(styles.containerDisabled);
+  }
+
+  const buttonTextStyles = [styles.buttonText];
+  if (props.textColor) {
+    buttonTextStyles.push({ color: props.textColor });
   }
 
   return (
@@ -20,7 +27,7 @@ const InputWithButton = (props) => {
         style={styles.buttonContainer}
         underlayColor={underlayColor}
       >
-        <Text style={styles.buttonText}>{props.buttonText}</Text>
+        <Text style={buttonTextStyles}>{props.buttonText}</Text>
       </TouchableHighlight>
       <View style={styles.separator} />
       <TextInput style={styles.input} underlineColorAndroid="transparent" {...props} />
@@ -28,12 +35,11 @@ const InputWithButton = (props) => {
   );
 };
 
-// define the type of the prop so we can easily debug later
-// see: https://www.npmjs.com/package/prop-types
 InputWithButton.propTypes = {
   onPress: PropTypes.func,
   buttonText: PropTypes.string,
   editable: PropTypes.bool,
+  textColor: PropTypes.string,
 };
 
 export default InputWithButton;

@@ -1,15 +1,13 @@
-// using some elements from ../List
-// to build out the screen, but is
-// mostly independent like the Options Screen
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { ScrollView, StatusBar } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { connect } from 'react-redux';
 
 import { ListItem, Separator } from '../components/List';
+import { changePrimaryColor } from '../actions/theme';
 
 const styles = EStyleSheet.create({
-  // needed to create local vars to refer to global vars
   $blue: '$primaryBlue',
   $orange: '$primaryOrange',
   $green: '$primaryGreen',
@@ -19,10 +17,11 @@ const styles = EStyleSheet.create({
 class Themes extends Component {
   static propTypes = {
     navigation: PropTypes.object,
+    dispatch: PropTypes.func,
   };
 
-  handlePressTheme = color => {
-    console.log('press theme (Themes.js)', color);
+  handlePressTheme = (color) => {
+    this.props.dispatch(changePrimaryColor(color));
     this.props.navigation.goBack();
   };
 
@@ -66,4 +65,4 @@ class Themes extends Component {
     );
   }
 }
-export default Themes;
+export default connect()(Themes);
